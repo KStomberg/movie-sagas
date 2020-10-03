@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 
 class MovieViewItem extends Component {
 
-    detailsPage = () => {
-        console.log('clicked', this.props.id);
+    idForDetailsPage = () => {
+        console.log('clicked, id:', this.props.id);
+        this.props.dispatch({
+            type: 'FETCH_DETAIL',
+            payload: this.props.id
+        })
+    
+        this.props.history.push('/details')
+
     }
 
     render() {
@@ -13,7 +20,7 @@ class MovieViewItem extends Component {
 
             <div>
                 <h3>{this.props.title}</h3>
-                <img key={this.props.key} id={this.props.id} src={this.props.image} onClick={this.detailsPage}></img>
+                <img key={this.props.key} id={this.props.id} src={this.props.image} onClick={this.idForDetailsPage}></img>
                 <p>{this.props.description}</p>
             </div>
         )
