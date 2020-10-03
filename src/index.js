@@ -25,6 +25,21 @@ function* fetchMovieSaga(action){
     })
 }
 
+function* fetchDetailsSaga(action) {
+    console.log('hit fetchDetailsSaga with', action);
+  
+    let response = yield axios({
+      method: "GET",
+      url: `/api/movie/${action.payload}`
+    });
+  
+    console.log('Got some details', response.data);
+    yield put({
+      type: "SET_DETAIL",
+      payload: response.data
+    });
+  }
+
 function* rootSaga() {
 yield takeEvery('FETCH_MOVIE', fetchMovieSaga);
 }
