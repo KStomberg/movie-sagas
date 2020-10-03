@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router'
+
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
 
 class MovieViewItem extends Component {
 
@@ -29,4 +35,4 @@ class MovieViewItem extends Component {
 
 
 
-export default connect()(MovieViewItem)
+export default connect(mapStateToProps)(withRouter(MovieViewItem))
