@@ -42,6 +42,7 @@ function* fetchDetailsSaga(action) {
 
 function* rootSaga() {
 yield takeEvery('FETCH_MOVIE', fetchMovieSaga);
+yield takeEvery('FETCH_DETAILS', fetchDetailsSaga)
 }
 
 // Create sagaMiddleware
