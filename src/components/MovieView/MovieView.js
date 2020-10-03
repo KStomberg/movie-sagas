@@ -23,7 +23,7 @@ class MovieView extends Component {
             <div>
                 <h1>Movies:</h1>
                 {this.props.reduxState.movies.map((movie, i) => 
-                    <MovieViewItem key={movie.id} image={movie.poster} description={movie.description} title={movie.title} /> )}
+                    <MovieViewItem key={movie.id} id={movie.id} image={movie.poster} description={movie.description} title={movie.title} /> )}
             </div>
         )
     }
