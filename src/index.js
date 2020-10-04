@@ -40,6 +40,19 @@ function* fetchDetailsSaga(action) {
   });
 }
 
+function* addMovieSaga (action) {
+    console.log('Hit addMovieSaga with:', action.payload);
+    yield Axios({
+        method: 'POST',
+        url: '/api/movie',
+        data: action.payload
+    })
+    console.log('New Movie!, updating list.');
+        yield put ({
+            type: 'FETCH_MOVIES'
+        })
+}
+
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIE', fetchMovieSaga);
   yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
@@ -92,6 +105,7 @@ const storeInstance = createStore(
     movies,
     genres,
     details,
+    newMovie
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
