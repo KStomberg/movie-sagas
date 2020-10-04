@@ -13,8 +13,9 @@ class DetailsViewItem extends Component {
         return(
 
             <div>
-                <h3>{JSON.stringify(this.props)}</h3>
-                <p>Test</p>
+                <h2>Details:</h2>
+                <h3>{this.props.title}</h3>
+
             </div>
         )
     }

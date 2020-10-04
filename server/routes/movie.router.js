@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  console.log('/GET');
+  console.log('/GET', req.params);
   const queryText = `SELECT * FROM "movies"
 	JOIN "movie_genre"
 		ON "movies"."id" = "movie_genre"."movie_id"
@@ -60,7 +60,7 @@ WHERE "movies"."id" = ${req.params.id};`;
   pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
-      console.error('ERROR IN JOIN GET /movies');
+      console.error('ERROR IN JOIN GET /movies', err);
       res.sendStatus(500);
     })
 });

@@ -7,22 +7,13 @@ const mapStateToProps = reduxState => ({
 
 class DetailsView extends Component {
 
-    componentDidMount() {
-        this.fetchDetails();
-    }
-
-    fetchDetails = (event) => {
-        this.props.dispatch({
-            type: 'FETCH_DETAILS'
-        })
-    }
-
     render() {
 
         return(
 
             <div>
-                <p>{JSON.stringify(this.props.reduxState)}</p>
+                {/* <p>{JSON.stringify(this.props.reduxState.details)}</p> */}
+                <p>Test1</p>
                 {this.props.reduxState.details.map((detail, i) => 
                 <DetailsViewItem key={detail.id} id={detail.id} title={detail.title} poster={detail.poster} description={detail.description} genre={detail.name}/> )}
             </div>

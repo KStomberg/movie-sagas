@@ -20,13 +20,13 @@ function* fetchMovieSaga(action) {
   });
   console.log('Back from GET with', response.data);
   yield put({
-    type: 'SET_MOVIES',
+    type: 'SET_MOVIE',
     payload: response.data,
   });
 }
 
-function* fetchDetailsSaga(action) {
-  console.log('hit fetchDetailsSaga with', action);
+function* fetchDetailSaga(action) {
+  console.log('hit fetchDetailsSaga with', action, action.payload);
 
   let response = yield Axios({
     method: 'GET',
@@ -49,13 +49,14 @@ function* addMovieSaga (action) {
     })
     console.log('New Movie!, updating list.');
         yield put ({
-            type: 'FETCH_MOVIES'
+            type: 'FETCH_MOVIE'
         })
 }
 
 function* rootSaga() {
   yield takeEvery('FETCH_MOVIE', fetchMovieSaga);
-  yield takeEvery('FETCH_DETAILS', fetchDetailsSaga);
+  yield takeEvery('FETCH_DETAIL', fetchDetailSaga);
+  yield takeEvery('ADD_MOVIE', addMovieSaga);
 }
 
 // Create sagaMiddleware
@@ -64,7 +65,7 @@ const sagaMiddleware = createSagaMiddleware();
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
   switch (action.type) {
-    case 'SET_MOVIES':
+    case 'SET_MOVIE':
       return action.payload;
     default:
       return state;
@@ -74,7 +75,7 @@ const movies = (state = [], action) => {
 // Used to store the movie genres
 const genres = (state = [], action) => {
   switch (action.type) {
-    case 'SET_GENRES':
+    case 'SET_GENRE':
       return action.payload;
     default:
       return state;
@@ -83,7 +84,7 @@ const genres = (state = [], action) => {
 
 const details = (state = [], action) => {
   switch (action.type) {
-    case 'SET_DETAILS':
+    case 'SET_DETAIL':
       return action.payload;
     default:
       return state;
