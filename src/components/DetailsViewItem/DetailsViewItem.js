@@ -8,6 +8,10 @@ const mapStateToProps = reduxState => ({
 
 class DetailsViewItem extends Component {
 
+    toHome = () => {
+        this.props.history.push('/')
+    }
+
     render() {
 
         return(
@@ -18,7 +22,7 @@ class DetailsViewItem extends Component {
                 <h3>{this.props.genre}</h3>
                 <img src={this.props.poster}/>
                 <p>{this.props.description}</p>
-
+                <button onClick={this.toHome}>Back to list</button>
 
 
             </div>
