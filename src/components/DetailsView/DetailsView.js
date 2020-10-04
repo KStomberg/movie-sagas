@@ -13,9 +13,9 @@ class DetailsView extends Component {
 
             <div>
                 {/* <p>{JSON.stringify(this.props.reduxState.details)}</p> */}
-                <p>Test1</p>
                 {this.props.reduxState.details.map((detail, i) => 
-                <DetailsViewItem key={detail.id} id={detail.id} title={detail.title} poster={detail.poster} description={detail.description} genre={detail.name}/> )}
+                <DetailsViewItem key={detail.id} id={detail.id} title={detail.title} 
+                poster={detail.poster} description={detail.description} genre={detail.name}/> )}
             </div>
         )
     }

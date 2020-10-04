@@ -15,6 +15,11 @@ class DetailsViewItem extends Component {
             <div>
                 <h2>Details:</h2>
                 <h3>{this.props.title}</h3>
+                <h3>{this.props.genre}</h3>
+                <img src={this.props.poster}/>
+                <p>{this.props.description}</p>
+
+
 
             </div>
         )
