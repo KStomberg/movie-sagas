@@ -4,6 +4,6 @@
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Duration: 72 hour sprint
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Description: App designed to allow you to add a new movie, and view all movies in db, using Postgres joined tables.
