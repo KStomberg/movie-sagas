@@ -46,17 +46,17 @@ function* fetchDetailSaga(action) {
 }
 
 //Sends POST req to add a new movie
-function* addMovieSaga (action) {
-    console.log('Hit addMovieSaga with:', action.payload);
-    yield Axios({
-        method: 'POST',
-        url: '/api/movie',
-        data: action.payload
-    })
-    console.log('New Movie!, updating list.');
-        yield put ({
-            type: 'FETCH_MOVIE'
-        })
+function* addMovieSaga(action) {
+  console.log('Hit addMovieSaga with:', action.payload);
+  yield Axios({
+    method: 'POST',
+    url: '/api/movie',
+    data: action.payload,
+  });
+  console.log('New Movie!, updating list.');
+  yield put({
+    type: 'FETCH_MOVIE',
+  });
 }
 
 function* rootSaga() {
@@ -100,12 +100,12 @@ const details = (state = [], action) => {
 
 //Updates state when new movie added
 const newMovie = (state = [], action) => {
-    switch(action.type) {
-        case 'SET_NEW_MOVIE':
-            return action.payload;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'SET_NEW_MOVIE':
+      return action.payload;
+    default:
+      return state;
+  }
 };
 
 // Create one store that all components can use
@@ -114,7 +114,7 @@ const storeInstance = createStore(
     movies,
     genres,
     details,
-    newMovie
+    newMovie,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
