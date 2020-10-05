@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+//Takes all movies and sends them to index.js
 router.get('/', (req, res) => {
   const queryText = 'SELECT * FROM movies';
   pool
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//Takes movie info and adds to DB
 router.post('/', (req, res) => {
   console.log(req.body);
   const insertMovieQuery = `
@@ -33,6 +35,7 @@ router.post('/', (req, res) => {
 
       const createdMovieId = result.rows[0].id;
 
+      //Takes genre info and adds to DB
       const insertMovieGenreQuery = `
       INSERT INTO "movie_genre" ("movie_id", "genre_id")
       VALUES  ($1, $2);
@@ -54,6 +57,7 @@ router.post('/', (req, res) => {
     });
 });
 
+//Joins tables together so it displays only the genre of specified movie
 router.get('/:id', (req, res) => {
   console.log('/GET', req.params);
   const queryText = `SELECT * FROM "movies"

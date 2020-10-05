@@ -9,6 +9,7 @@ const mapStateToProps = reduxState => ({
 
 class MovieViewItem extends Component {
 
+    //When a poster is clicked, send to /details and fetch the details of the chosen movie
     idForDetailsPage = () => {
         console.log('clicked, id:', this.props.id);
         this.props.dispatch({

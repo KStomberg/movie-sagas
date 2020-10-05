@@ -12,6 +12,7 @@ import createSagaMiddleware from 'redux-saga';
 import Axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
+//Sends GET req to collect all movies in DB
 function* fetchMovieSaga(action) {
   console.log('in fetchMovieSaga with:', action);
   let response = yield Axios({
@@ -19,12 +20,15 @@ function* fetchMovieSaga(action) {
     url: '/api/movie',
   });
   console.log('Back from GET with', response.data);
+
+  //Calls SET_MOVIE reducer after making GET req
   yield put({
     type: 'SET_MOVIE',
     payload: response.data,
   });
 }
 
+//Sends GET req to collect details of a specific movie
 function* fetchDetailSaga(action) {
   console.log('hit fetchDetailsSaga with', action, action.payload);
 
@@ -33,6 +37,7 @@ function* fetchDetailSaga(action) {
     url: `/api/movie/${action.payload}`,
   });
 
+  //Calls SET_DETAIL reducer after making req
   console.log('Got some details', response.data);
   yield put({
     type: 'SET_DETAIL',
@@ -40,6 +45,7 @@ function* fetchDetailSaga(action) {
   });
 }
 
+//Sends POST req to add a new movie
 function* addMovieSaga (action) {
     console.log('Hit addMovieSaga with:', action.payload);
     yield Axios({
@@ -82,6 +88,7 @@ const genres = (state = [], action) => {
   }
 };
 
+//updates state when seleting a movie to view details of
 const details = (state = [], action) => {
   switch (action.type) {
     case 'SET_DETAIL':
@@ -91,6 +98,7 @@ const details = (state = [], action) => {
   }
 };
 
+//Updates state when new movie added
 const newMovie = (state = [], action) => {
     switch(action.type) {
         case 'SET_NEW_MOVIE':

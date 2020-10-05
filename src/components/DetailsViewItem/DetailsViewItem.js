@@ -8,6 +8,7 @@ const mapStateToProps = reduxState => ({
 
 class DetailsViewItem extends Component {
 
+    //When Back to list button pressed, send home
     toHome = () => {
         this.props.history.push('/')
     }

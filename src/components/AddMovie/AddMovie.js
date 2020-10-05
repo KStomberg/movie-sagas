@@ -13,6 +13,7 @@ class AddMovie extends Component {
         }
     }
 
+    //Updates local state when anything in the form is changed
     handleChangeFor = (event, propertyName) => {
         this.setState({
             newMovie: {
@@ -22,6 +23,7 @@ class AddMovie extends Component {
         })
     }
 
+    //When form submitted, sends ADD_MOVIE to index.js to run POST req
     addMovie = (event) => {
         event.preventDefault();
         console.log('current state:', this.state);
@@ -31,6 +33,7 @@ class AddMovie extends Component {
         })
     }
 
+    //Sends to home screen after cancel button pressed
     toHome = () => {
         this.props.history.push('/')
     }
