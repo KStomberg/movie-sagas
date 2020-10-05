@@ -20,7 +20,7 @@ class DetailsViewItem extends Component {
                 <h2>Details:</h2>
                 <h3>{this.props.title}</h3>
                 <h3>{this.props.genre}</h3>
-                <img src={this.props.poster}/>
+                <img width="200" height="300" alt={this.props.title} src={this.props.poster}/>
                 <p>{this.props.description}</p>
                 <button onClick={this.toHome}>Back to list</button>
 

@@ -26,7 +26,7 @@ class MovieViewItem extends Component {
 
             <div class="listItem">
                 <h3>{this.props.title}</h3>
-                <img width="200" height="300" key={this.props.key} id={this.props.id} src={this.props.image} onClick={this.idForDetailsPage}></img>
+                <img width="200" height="300" alt={this.props.title} key={this.props.key} id={this.props.id} src={this.props.image} onClick={this.idForDetailsPage}></img>
                 <p>{this.props.description}</p>
             </div>
         )
