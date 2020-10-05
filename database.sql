@@ -55,3 +55,26 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+CREATE TABLE "movie_genre" (
+  id SERIAL PRIMARY KEY,
+  movie_id int,
+  genre_id int
+
+)
+
+INSERT INTO "movie_genre" ("movie_id", "genre_id")
+	VALUES (14,2),(1,11),
+(2,	2),
+(3,	13),
+(4,	2),
+(5,	6),
+(6,	8),
+(7,	1),
+(8,	6),
+(9,	2),
+(10,11),
+(11,11),
+(12, 4),
+(13, 6),
+(14, 2);
